@@ -1,0 +1,20 @@
+<html>
+	<head>
+		{% if title %}
+		<title> {{ title }} </title>
+		{% else %}
+		<title> Car Payments Calculator </title>
+		{% endif %}
+
+		<div>
+			<a href="{{ 'index' }}">Home</a>
+			<a href="{{ 'balance' }}">Check Balance</a>
+			<a href="{{ 'payments' }}">Make a Payment</a>
+			<a href="{{ 'viewpayments' }}">View Payments</a>
+
+		</div>
+	</head>
+	<body>
+		{% block content %}{% endblock %}
+	</body>
+</html>

@@ -19,10 +19,6 @@ if __name__ == '__main__':
 
     username = input('Please input your username:\n')
 
-
-
-
-
     # personWithAnimals = {"addedDate": datetime.today(),
     #                     "personName": newPerson.name,
     #                      "personGender": newPerson.gender,
