@@ -2,10 +2,25 @@
 
 {% block content %}
 
+
+
 <div>
-	{% for p in id %}
-		{{ id }}
-	{% endfor %}
+	{% if results %}
+	<table>
+		{% for column in column_names %}
+			<th>{{ column }}</th>
+		{% endfor %}
+		{% for result in results %}
+			<tr>
+				<td> {{ result['date_recorded'] }} </td>
+				<td> {{ result['payment_amount'] }} </td>
+			</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+	<h1>No data available.</h1>
+	{% endif %}
+
 </div>
 
 {% endblock %}
