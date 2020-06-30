@@ -1,22 +1,14 @@
-<html>
-	<head>
-		{% if title %}
-		<title> {{ title }} </title>
-		{% else %}
-		<title> Car Payments Calculator </title>
-		{% endif %}
+{% extends "bootstrap/base.html" %}
 
-		<div>
-			<a href="{{ 'index' }}">Home</a>
-			<a href="{{ 'balance' }}">Check Balance</a>
-			<a href="{{ 'payments' }}">Make a Payment</a>
-			<a href="{{ 'viewpayments' }}">View Payments</a>
+{% block title %}
+	{% if title %} {{ title }} {% else %} Car Payments Calculator {% endif %}}
+{% endblock %}
 
-		</div>
-	</head>
-	<body>
-		<br>
-		<br>
-		{% block content %}{% endblock %}
-	</body>
-</html>
+{% block navbar %}
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand" href="{{ 'currentstatus' }}">Current Status</a>
+		<a class="navbar-brand" href="{{ 'payments' }}">Payments</a>
+		<a class="navbar-brand" href="{{ 'viewpayments' }}">View Payments</a>
+	</nav>
+{% endblock %}
+

@@ -11,9 +11,9 @@ def index():
 	return render_template('index.html',
 	                       title=title)
 
-@app.route('/balance')
+@app.route('/currentstatus')
 def balance():
-	title = 'Check Balance'
+	title = 'Current Status'
 	TOTAL_AMOUNT = 8631.48
 	query = db.engine.execute("""
 	                                SELECT SUM(payment_amount)
@@ -23,7 +23,7 @@ def balance():
 	amount_paid = query[0]
 	to_be_paid = TOTAL_AMOUNT - query[0]
 
-	return render_template('balance.html',
+	return render_template('currentstatus.html',
 	                       title=title,
 	                       total_amount='${:,.2f}'.format(TOTAL_AMOUNT),
 	                       amount_paid='${:,.2f}'.format(amount_paid),
@@ -34,8 +34,8 @@ def payment():
 	title = 'Make a Payment'
 	form = PaymentForm()
 	if form.validate_on_submit():
-		payment = Payment(payment_amount=form.payment_amount.data)
-		print(payment)
+		payment = Payment(payment_amount=form.payment_amount.data,
+		                  date_recorded=form.date_recorded.data)
 		db.session.add(payment)
 		db.session.commit()
 		flash('Payment Successful!')
